@@ -1,28 +1,82 @@
-    <!doctype html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-        <title>Long March</title>
-        <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
-        <style>
-            html, body, #container {
-                height: 100%;
-                width: 100%;
-            }
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>重走长征路</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<style>
+    html, body, #container {
+        height: 100%;
+        width: 100%;
+    }
 
-            .input-card .btn{
-                margin-right: 1.2rem;
-                width: 9rem;
-            }
+    .input-card .btn {
+        margin-right: 1.2rem;
+        width: 9rem;
+    }
 
-            .input-card .btn:last-child{
-                margin-right: 0;
-            }
-        </style>
-    </head>
-    <body>
+    .input-card .btn:last-child {
+        margin-right: 0;
+    }
+</style>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/jquery.jticker.js"></script>
+<script>
+window.onload = function(){
+  setTimeout(welcome,42000);//1000毫秒=1秒后执行test方法
+  $("#welcome").css("width",$(document.body).width());
+  $("#welcome").css("height",$(window).height());
+  //setTimeout(welcome,0);
+  function welcome()
+	{
+		$("#ticker").addClass("disappear");
+		// $("#welcome").removeClass("bg");
+		setTimeout(WEL,300);
+		//setTimeout(WEL,0);
+		function WEL(){
+			$("#welcome").css("height","0px");
+		}
+        marker.moveAlong(lineArr, 2000000);
+	}
+	
+}
+
+jQuery(document).ready(function(){
+	jQuery("#ticker").ticker({
+ 		cursorList:  " ",
+ 		rate:        190,
+ 		delay:       4000
+	}).trigger("play").trigger("stop");
+    jQuery(".style").click(function(){
+        jQuery("#ticker")
+        .trigger({
+            type: "control",
+            cursor: jQuery("#ticker").data("ticker").cursor.css({width: "4em", background: "#efefef", position: "relative", top: "1em", left: "-1em"})
+        })
+        return false;
+    });
+  	
+  });
+</script>
+</head>
+
+<body>
+	<div class="welcome bg" id="welcome">
+        <div id="ticker">
+            <div>
+                <h3>《七律长征》</h3>
+                <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--毛泽东</h5>
+                <p>红军不怕远征难，万水千山只等闲。</p>
+                <p>五岭逶迤腾细浪，乌蒙磅礴走泥丸。</p>
+                <p>金沙水拍云崖暖，大渡桥横铁索寒。</p>
+                <p>更喜岷山千里雪，三军过后尽开颜。</p>
+                <p>&nbsp;</p>
+                <p>许多年前的秋天，无数革命先辈踏上这伟大的征程，无数的人长眠路上，鲜血洒满中华大地，他们依然不惧，披荆斩棘，奋力前行，为中华民族打出一片光明的未来......</p>
+                <p>80年后的我们，不能忘记。重走父辈的路，让我们铭记他们的牺牲......</p>
+            </div>  
+        </div>
+    </div>
     <div id="container"></div>
     <div class="input-card">
         <h4>Console</h4>
@@ -14159,7 +14213,7 @@
             map: map,
             path: lineArr,
             showDir:true,
-            strokeColor: "#28F", 
+            strokeColor: "#f00", 
             strokeWeight: 6,    
         });
         var passedPolyline = new AMap.Polyline({
@@ -14171,8 +14225,9 @@
             passedPolyline.setPath(e.passedPath);
         });
         map.setFitView();
+        
         function startAnimation () {
-            marker.moveAlong(lineArr, 20000000);
+            marker.moveAlong(lineArr, 200000000);
         }
         function pauseAnimation () {
             marker.pauseMove();

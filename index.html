@@ -19,9 +19,10 @@
         margin-right: 0;
     }
 </style>
-<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/jquery.jticker.js"></script>
+
 <script>
 window.onload = function(){
   setTimeout(welcome,30000);//1000毫秒=1秒后执行test方法
@@ -46,7 +47,7 @@ jQuery(document).ready(function(){
 	jQuery("#ticker").ticker({
  		cursorList:  " ",
  		rate:        120,
- 		delay:       3000
+ 		delay:       2000
 	}).trigger("play").trigger("stop");
     jQuery(".style").click(function(){
         jQuery("#ticker")
@@ -14201,10 +14202,15 @@ jQuery(document).ready(function(){
                 roadNet
          ]
         });
+        var icon = new AMap.Icon({
+         size: new AMap.Size(60, 30),
+         image: 'gd5.png',
+         imageSize: new AMap.Size(60, 30) 
+	})
         marker = new AMap.Marker({
             map: map,
             position: [115.900835491,25.8533029126515],
-            icon:"https://webapi.amap.com/images/car.png",
+            icon:icon,
             offset: new AMap.Pixel(-26, -13),
             autoRotation: true,
             angle:-90,

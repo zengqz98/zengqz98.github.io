@@ -25,7 +25,11 @@
 
 <script>
 window.onload = function(){
-  setTimeout(welcome,30000);//1000毫秒=1秒后执行test方法
+
+}
+
+jQuery(document).ready(function(){
+    setTimeout(welcome,25000);//1000毫秒=1秒后执行test方法
   $("#welcome").css("width",$(document.body).width());
   $("#welcome").css("height",$(window).height());
   //setTimeout(welcome,0);
@@ -40,10 +44,6 @@ window.onload = function(){
 		}
         marker.moveAlong(lineArr, 2000000);
 	}
-	
-}
-
-jQuery(document).ready(function(){
 	jQuery("#ticker").ticker({
  		cursorList:  " ",
  		rate:        120,
